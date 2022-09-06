@@ -42,10 +42,10 @@ def initBot():
 
 def tts(text, name):
     tts = gTTS(text, slow=False)
-    tts.save(r'C:\Users\dillo\Desktop\2022\reddit to tiktok\working\gtts-' + name + ".mp3")
+    tts.save(r'C:\Users\dillo\Desktop\2022\Reddit-to-TTS-Video\working\gtts-' + name + ".mp3")
 
 def speedup(file, output):
-    body_speed_up = ff.FFmpeg(executable=r"C:\Users\dillo\Desktop\2022\reddit to tiktok\ffmpeg\bin\ffmpeg.exe",inputs={file : None}, outputs={output: ["-filter:a", "atempo=1.2"]})
+    body_speed_up = ff.FFmpeg(executable=r"C:\Users\dillo\Desktop\2022\Reddit-to-TTS-Video\ffmpeg\bin\ffmpeg.exe",inputs={file : None}, outputs={output: ["-filter:a", "atempo=1.2"]})
     body_speed_up.run()
 
 def clearFolder(path):
@@ -66,6 +66,10 @@ if __name__ == '__main__':
     post = bot.find_element(By.XPATH, "//div[@data-test-id='post-content']")
     title = bot.find_element(By.XPATH, "//div[@data-test-id='post-content']/descendant::h1")
     pgs = bot.find_elements(By.XPATH, "//div[@data-test-id='post-content']/descendant::p")
+
+# make working directory
+    if not os.path.exists("working"):
+        os.makedirs("working")
 
 #tts processes and screenshots
     processes = []
